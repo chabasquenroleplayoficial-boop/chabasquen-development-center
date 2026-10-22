@@ -1,1 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101510">
+<title>Centro de Desarrollo | Chabasquén Roleplay</title>
 
+<style>
+:root {
+  --fondo: #101510;
+  --panel: #191f19;
+  --verde: #a5f36c;
+  --texto: #f1f5ee;
+  --suave: #a6b0a2;
+  --borde: #303a30;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+header {
+  padding: 24px 18px;
+  border-bottom: 1px solid var(--borde);
+  background: #141b14;
+}
+
+.contenedor {
+  width: min(100% - 32px, 1000px);
+  margin: auto;
+}
+
+.marca {
+  color: var(--verde);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+h1 {
+  font-size: clamp(28px, 6vw, 46px);
+  line-height: 1.15;
+  margin: 12px 0;
+}
+
+h2 {
+  font-size: 22px;
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 17px;
+  margin: 0 0 8px;
+}
+
+p {
+  color: var(--suave);
+}
+
+.etiqueta {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #46633a;
+  border-radius: 5px;
+  color: var(--verde);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.hero {
+  padding: 48px 0 30px;
+}
+
+.hero p {
+  max-width: 650px;
+  font-size: 16px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 22px;
+  margin: 18px 0;
+}
+
+.resumen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.numero {
+  color: var(--verde);
+  font-size: clamp(35px, 8vw, 54px);
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.progreso-fondo {
+  height: 9px;
+  background: #303930;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 16px 0;
+}
+
+.progreso {
+  height: 100%;
+  width: 0%;
+  background: var(--verde);
+  border-radius: 10px;
+  transition: width .3s;
+}
+
+.dato {
+  font-size: 13px;
+  color: var(--suave);
+}
+
+.fases {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.fase {
+  background: #141a14;
+  border: 1px solid var(--borde);
+  border-radius: 9px;
+  padding: 17px;
+}
+
+.fase-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.estado {
+  color: var(--verde);
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.porcentaje {
+  font-size: 14px;
+  color: var(--verde);
+  font-weight: bold;
+}
+
+.etapa {
+  font-size: 12px;
+  color: var(--suave);
+}
+
+.novedad {
+  border-left: 3px solid var(--verde);
+  padding: 4px 0 4px 15px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 15px;
+  border-top: 1px solid var(--borde);
+  margin-top: 35px;
+  font-size: 12px;
+  color: var(--suave);
+}
+
+@media (max-width: 520px) {
+  .resumen,
+  .fases {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 32px;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="contenedor">
+    <div class="marca">CHABASQUÉN ROLEPLAY 🌴</div>
+    <div class="dato">CENTRO OFICIAL DE DESARROLLO</div>
+  </div>
+</header>
+
+<main class="contenedor">
+
+  <section class="hero">
+    <span class="etiqueta">PROYECTO EN DESARROLLO</span>
+
+    <h1>Construyendo una<br>nueva ciudad.</h1>
+
+    <p>
+      Sigue la evolución de Chabasquén Roleplay:
+      sistemas, facciones, economía, trabajos y todos
+      los elementos necesarios para una experiencia
+      de roleplay seria, organizada y de calidad.
+    </p>
+  </section>
+
+  <section class="panel">
+    <div class="dato">AVANCE GENERAL DEL PROYECTO</div>
+
+    <div class="resumen">
+      <div>
+        <div class="numero" id="total">0%</div>
+        <div class="dato">Progreso registrado</div>
+      </div>
+
+      <div>
+        <div class="numero">09</div>
+        <div class="dato">Meses planificados</div>
+      </div>
+    </div>
+
+    <div class="progreso-fondo">
+      <div class="progreso" id="barra-total"></div>
+    </div>
+
+    <p class="dato">
+      Última actualización: <span id="fecha">Pendiente</span>
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>Fases de desarrollo</h2>
+    <p>Seguimiento de las principales etapas del proyecto.</p>
+
+    <div class="fases" id="lista-fases"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Últimas novedades</h2>
+
+    <div class="novedad">
+      <h3>Centro de desarrollo iniciado</h3>
+      <p>
+        Se está preparando la estructura del proyecto
+        y su sistema de seguimiento.
+      </p>
+      <span class="dato">22 de octubre de 2026</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  CHABASQUÉN ROLEPLAY 🌴<br>
+  Centro de seguimiento del desarrollo
+</footer>
+
+<script>
+const fases = [
+  {nombre:"Planificación general", estado:"En preparación", avance:0},
+  {nombre:"Mapeo y diseño de la ciudad", estado:"Pendiente", avance:0},
+  {nombre:"Sistemas principales", estado:"Pendiente", avance:0},
+  {nombre:"Trabajos y economía", estado:"Pendiente", avance:0},
+  {nombre:"Facciones legales e ilegales", estado:"Pendiente", avance:0},
+  {nombre:"Pruebas y optimización", estado:"Pendiente", avance:0},
+  {nombre:"Lanzamiento oficial", estado:"Pendiente", avance:0}
+];
+
+const lista = document.getElementById("lista-fases");
+
+fases.forEach((fase, i) => {
+  lista.innerHTML += `
+    <article class="fase">
+      <div class="fase-cabecera">
+        <span class="etapa">FASE ${String(i+1).padStart(2,"0")}</span>
+        <span class="porcentaje">${fase.avance}%</span>
+      </div>
+
+      <h3>${fase.nombre}</h3>
+      <div class="estado">${fase.estado}</div>
+
+      <div class="progreso-fondo">
+        <div class="progreso" style="width:${fase.avance}%"></div>
+      </div>
+    </article>
+  `;
+});
+
+const promedio = Math.round(
+  fases.reduce((s, f) => s + f.avance, 0) / fases.length
+);
+
+document.getElementById("total").textContent = promedio + "%";
+document.getElementById("barra-total").style.width = promedio + "%";
+</script>
+
+</body>
+</html>
